@@ -33,7 +33,7 @@ build {
   }
 
   post-processors "winrm" {
-    type = "shell-local",
+    type = "shell-local"
     inline = [
       "Stop-Service -Name winrm -Force",
       "Set-Service -Name winrm -StartupType Disabled"
