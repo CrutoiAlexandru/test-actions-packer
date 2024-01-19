@@ -29,6 +29,7 @@ build {
   sources = ["source.amazon-ebs.dotnet-windows-base"]
 
   provisioner "powershell" {
-    script = "./setup.ps1"
+    script   = "./setup.ps1"
+    on_error = "stop"
   }
 }
