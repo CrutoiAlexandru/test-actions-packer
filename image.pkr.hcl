@@ -22,7 +22,7 @@ source "amazon-ebs" "dotnet-windows-final" {
 
   source_ami_filter {
     filters = {
-      name = "windows-dotnet-base"
+      name = "dotnet-windows-base"
     }
     owners = ["self"]
   }
