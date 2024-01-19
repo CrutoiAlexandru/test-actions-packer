@@ -12,8 +12,8 @@ variable "region" {
   default = "eu-central-1"
 }
 
-source "amazon-ebs" "dotnet-windows-base" {
-  ami_name              = "dotnet-windows-base"
+source "amazon-ebs" "dotnet-windows-final" {
+  ami_name              = "dotnet-windows-final"
   communicator          = "winrm"
   instance_type         = "t2.micro"
   region                = "${var.region}"
@@ -33,8 +33,8 @@ source "amazon-ebs" "dotnet-windows-base" {
 }
 
 build {
-  name    = "dotnet-windows-base"
-  sources = ["source.amazon-ebs.dotnet-windows-base"]
+  name    = "dotnet-windows-final"
+  sources = ["source.amazon-ebs.dotnet-windows-final"]
 
   provisioner "powershell" {
     script = "./setup.ps1"
