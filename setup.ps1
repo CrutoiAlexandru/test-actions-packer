@@ -1,3 +1,4 @@
+$ErrorActionPreference="Stop"
 ./dotnet_install.ps1
 
 Set-ExecutionPolicy Bypass -Scope Process -Force
