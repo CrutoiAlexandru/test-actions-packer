@@ -25,20 +25,19 @@ source "amazon-ebs" "dotnet-windows-base" {
 }
 
 build {
-  name    = "learn-packer"
+  name    = "dotnet-windows-base"
   sources = ["source.amazon-ebs.firstrun-windows"]
 
   provisioner "powershell" {
     script = "./setup.ps1"
   }
 
-  post-processors = [
-    {
-      type = "shell-local",
-      inline = [
-        "Stop-Service -Name winrm -Force",
-        "Set-Service -Name winrm -StartupType Disabled"
-      ]
-    }
-  ]
+  post-processors "winrm" {
+    type = "shell-local",
+    inline = [
+      "Stop-Service -Name winrm -Force",
+      "Set-Service -Name winrm -StartupType Disabled"
+    ]
+  }
+
 }
