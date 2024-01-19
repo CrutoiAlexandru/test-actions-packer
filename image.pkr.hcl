@@ -27,6 +27,10 @@ source "amazon-ebs" "dotnet-windows-final" {
     owners = ["self"]
   }
 
+  tags = {
+    Name = "dotnet-windows-final"
+  }
+
   user_data_file = "./winrm_setup.txt"
   winrm_password = "SuperS3cr3t!!!!"
   winrm_username = "Administrator"
