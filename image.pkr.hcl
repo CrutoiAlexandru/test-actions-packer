@@ -33,4 +33,8 @@ build {
   provisioner "powershell" {
     script = "./setup.ps1"
   }
+
+  provisioner "powershell" {
+    script = "./dotnet_install.ps1"
+  }
 }
