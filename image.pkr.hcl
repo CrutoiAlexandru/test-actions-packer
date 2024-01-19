@@ -17,9 +17,15 @@ source "amazon-ebs" "dotnet-windows-base" {
   communicator          = "winrm"
   instance_type         = "t2.micro"
   region                = "${var.region}"
-  source_ami            = "ami-0ced908879ca69797"
   force_deregister      = true
   force_delete_snapshot = true
+
+  source_ami_filter {
+    filters = {
+      name = "windows-dotnet-base"
+    }
+    owners = ["self"]
+  }
 
   user_data_file = "./winrm_setup.txt"
   winrm_password = "SuperS3cr3t!!!!"
