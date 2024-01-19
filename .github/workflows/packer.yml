@@ -3,7 +3,7 @@ name: Build Dotnet Windows AMI
 on:
   push:
     branches:
-      - main
+      - dotnet-windows-base
 
 jobs:
   build-ami:
