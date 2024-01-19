@@ -21,6 +21,10 @@ source "amazon-ebs" "dotnet-windows-base" {
   force_deregister      = true
   force_delete_snapshot = true
 
+  tags = {
+    Name = "dotnet-windows-base"
+  }
+
   user_data_file = "./winrm_setup.txt"
   winrm_password = "SuperS3cr3t!!!!"
   winrm_username = "Administrator"
