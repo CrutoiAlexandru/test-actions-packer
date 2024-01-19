@@ -26,7 +26,7 @@ source "amazon-ebs" "dotnet-windows-base" {
 
 build {
   name    = "dotnet-windows-base"
-  sources = ["source.amazon-ebs.firstrun-windows"]
+  sources = ["source.amazon-ebs.dotnet-windows-base"]
 
   provisioner "powershell" {
     script = "./setup.ps1"
