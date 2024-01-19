@@ -1,3 +1,5 @@
+$ErrorActionPreference="Stop"
+
 git clone https://github.com/CrutoiAlexandru/test-actions-dotnet
 
 cd test-actions-dotnet
