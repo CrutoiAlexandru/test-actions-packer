@@ -14,7 +14,7 @@ variable "region" {
 
 variable "admin_password" {
   type    = string
-  default = "parola"
+  default = "Parola123!!!"
 }
 
 source "amazon-ebs" "dotnet-windows-base" {
