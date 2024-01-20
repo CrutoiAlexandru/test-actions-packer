@@ -25,12 +25,12 @@ jobs:
 
       - name: Run packer validate
         id: validate
-        run: packer validate -var 'admin_password=$SECRET_PASSWORD' ./image.pkr.hcl
+        run: packer validate -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
 
       - name: Build AMI
-        run: packer build -var 'admin_password=$SECRET_PASSWORD' ./image.pkr.hcl
+        run: packer build -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
