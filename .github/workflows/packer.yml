@@ -23,7 +23,7 @@ jobs:
         id: init
         run: packer init ./image.pkr.hcl
 
-      - name: Run packer validate
+      - name: Run packer validate -var "admin_password=$SECRET_PASSWORD"
         id: validate
         run: packer validate ./image.pkr.hcl
 
