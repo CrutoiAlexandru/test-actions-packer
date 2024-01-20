@@ -23,9 +23,11 @@ jobs:
         id: init
         run: packer init ./image.pkr.hcl
 
-      - name: Run packer validate
+      - name: Run packer validate -var "admin_password=$SECRET_PASSWORD"
         id: validate
         run: packer validate ./image.pkr.hcl
+        env:
+          SECRET_PASSWORD: ${{ secrets.SECRET_PASWORD }}
 
       - name: Build AMI
         run: packer build ./image.pkr.hcl -var "admin_password=$SECRET_PASSWORD"
