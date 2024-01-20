@@ -12,6 +12,10 @@ variable "region" {
   default = "eu-central-1"
 }
 
+variable "admin_password" {
+  type = string
+}
+
 source "amazon-ebs" "dotnet-windows-base" {
   ami_name              = "dotnet-windows-base"
   communicator          = "winrm"
@@ -26,7 +30,7 @@ source "amazon-ebs" "dotnet-windows-base" {
   }
 
   user_data_file = "./winrm_setup.txt"
-  winrm_password = "SuperS3cr3t!!!!"
+  winrm_password = "${var.admin_password}"
   winrm_username = "Administrator"
 }
 
