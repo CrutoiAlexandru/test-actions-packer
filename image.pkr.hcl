@@ -13,7 +13,8 @@ variable "region" {
 }
 
 variable "admin_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 source "amazon-ebs" "dotnet-windows-final" {
