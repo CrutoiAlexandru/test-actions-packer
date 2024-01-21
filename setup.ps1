@@ -1,7 +1,9 @@
-$ErrorActionPreference="Stop"
+$ErrorActionPreference = "Stop"
 
-git clone https://github.com/CrutoiAlexandru/test-actions-dotnet
+New-Item -Path C:\App -ItemType Directory -Force
 
-cd test-actions-dotnet
+git clone https://github.com/CrutoiAlexandru/test-actions-dotnet C:\App
+ 
+cd C:\App
 
 dotnet build
