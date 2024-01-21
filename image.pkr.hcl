@@ -12,11 +12,11 @@ variable "region" {
   default = "eu-central-1"
 }
 
-variable "admin_password" {
-  type      = string
-  default   = "Parola123!!!"
-  sensitive = true
-}
+// variable "admin_password" {
+//   type      = string
+//   default   = "Parola123!!!"
+//   sensitive = true
+// }
 
 source "amazon-ebs" "dotnet-windows-base" {
   ami_name              = "dotnet-windows-base"
@@ -31,7 +31,7 @@ source "amazon-ebs" "dotnet-windows-base" {
     Name = "dotnet-windows-base"
   }
 
-  user_data = <<EOF
+  user_data = <<-EOF
 <powershell>
 # Set administrator password
 net user Administrator Parola123!!!
