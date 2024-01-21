@@ -43,17 +43,4 @@ build {
   provisioner "powershell" {
     script = "./setup.ps1"
   }
-
-  provisioner "file" {
-    source      = "./dotnet-install.ps1"
-    destination = "./dotnet-install.ps1"
-  }
-
-  provisioner "powershell" {
-    inline = ["./dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop"]
-  }
-
-  provisioner "powershell" {
-    inline = ["./dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore"]
-  }
 }
