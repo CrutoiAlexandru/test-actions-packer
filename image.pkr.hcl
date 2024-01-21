@@ -34,7 +34,7 @@ source "amazon-ebs" "dotnet-windows-base" {
   user_data = <<EOF
 <powershell>
 # Set administrator password
-net user Administrator ${var.admin_password} 
+net user Administrator "${var.admin_password}"
 wmic useraccount where " name = ' Administrator ' " set PasswordExpires=FALSE
 
 # First, make sure WinRM can't be connected to

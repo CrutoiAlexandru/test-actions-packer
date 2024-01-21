@@ -25,13 +25,13 @@ jobs:
 
       - name: Run packer validate
         id: validate
-        # run: packer validate -on-error=cleanup -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
+        # run: packer validate -on-error=cleanup -var admin_password=$SECRET_PASSWORD .
         run: packer validate .
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
 
       - name: Build AMI
-        # run: packer build -on-error=cleanup -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
+        # run: packer build -on-error=cleanup -var admin_password=$SECRET_PASSWORD .
         run: packer build .
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
