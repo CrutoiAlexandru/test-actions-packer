@@ -23,23 +23,16 @@ jobs:
         id: init
         run: packer init ./image.pkr.hcl
 
-      - name: Debug
-        id: debug
-        run: echo packer validate -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
-        # run: packer validate ./image.pkr.hcl
-        env:
-          SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
-
       - name: Run packer validate
         id: validate
-        run: packer validate -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
-        # run: packer validate ./image.pkr.hcl
+        # run: packer validate -on-error=cleanup -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
+        run: packer validate .
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
 
       - name: Build AMI
-        run: packer build -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
-        # run: packer build ./image.pkr.hcl
+        # run: packer build -on-error=cleanup -var "admin_password=$SECRET_PASSWORD" ./image.pkr.hcl
+        run: packer build .
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
