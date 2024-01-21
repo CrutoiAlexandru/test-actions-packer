@@ -30,8 +30,7 @@ source "amazon-ebs" "dotnet-windows-base" {
     Name = "dotnet-windows-base"
   }
 
-  user_data = base64encode(templatefile("./winrm.tmpl", { admin_password = "${var.admin_password}" }))
-
+  user_data_file = "./winrm.ps1"
   winrm_password = "${var.admin_password}"
   winrm_username = "Administrator"
 }

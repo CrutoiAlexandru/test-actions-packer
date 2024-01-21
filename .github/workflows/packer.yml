@@ -13,6 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Insert winrm password
+        id: winrmpass
+        run: |
+          sed '3s/.*/net user Administrator $SECRET_PASSWORD/' winrm.ps1 > winrm_temp.ps1
+          mv winrm_temp.ps1 winrm.ps1
+        env:
+          SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
+
       - name: Set up Packer
         uses: hashicorp/setup-packer@main
         id: setup
