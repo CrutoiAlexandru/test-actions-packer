@@ -31,6 +31,7 @@ source "amazon-ebs" "dotnet-windows-base" {
     Name = "dotnet-windows-base"
   }
 
+  // user_data      = "net user Administrator Parola123!!!"
   user_data_file = "./winrm.ps1"
 
   winrm_password = "Parola123!!!"
