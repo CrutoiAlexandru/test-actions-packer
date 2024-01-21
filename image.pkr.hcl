@@ -47,9 +47,10 @@ build {
   }
 
   provisioner "powershell" {
-    inline = [
-      "./dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop",
-      "./dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore"
-    ]
+    script = "./dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop"
+  }
+
+  provisioner "powershell" {
+    script = "./dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore"
   }
 }
