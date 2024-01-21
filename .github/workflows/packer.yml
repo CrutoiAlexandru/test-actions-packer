@@ -25,7 +25,7 @@ jobs:
 
       - name: Run packer validate
         id: validate
-        run: packer validate -var admin_password=$SECRET_PASSWORD .
+        run: packer validate .
         env:
           SECRET_PASSWORD: ${{ secrets.SECRET_PASSWORD }}
 
