@@ -12,11 +12,10 @@ variable "region" {
   default = "eu-central-1"
 }
 
-// variable "admin_password" {
-//   type      = string
-//   default   = "Parola123!!!"
-//   sensitive = true
-// }
+variable "admin_password" {
+  type      = string
+  sensitive = true
+}
 
 source "amazon-ebs" "dotnet-windows-base" {
   ami_name              = "dotnet-windows-base"
@@ -33,7 +32,7 @@ source "amazon-ebs" "dotnet-windows-base" {
 
   user_data_file = "./winrm.ps1"
 
-  winrm_password = "Parola123!!!"
+  winrm_password = "${var.admin_password}"
   winrm_username = "Administrator"
 }
 
@@ -45,11 +44,16 @@ build {
     script = "./setup.ps1"
   }
 
-  provisioner "powershell" {
-    script = "./dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop"
+  provisioner "file" {
+    source      = "./dotnet-install.ps1"
+    destination = "./dotnet-install.ps1"
   }
 
   provisioner "powershell" {
-    script = "./dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore"
+    inline = ["./dotnet-install.ps1 -Channel 8.0 -Runtime windowsdesktop"]
+  }
+
+  provisioner "powershell" {
+    inline = ["./dotnet-install.ps1 -Channel 8.0 -Runtime aspnetcore"]
   }
 }
