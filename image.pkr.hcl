@@ -36,7 +36,7 @@ source "amazon-ebs" "dotnet-windows-final" {
     Name = "dotnet-windows-final"
   }
 
-  user_data      = templatefile("./winrm.ps1", { admin_password = "${var.admin_password}" })
+  user_data_file = "./winrm.ps1"
   winrm_password = "${var.admin_password}"
   winrm_username = "Administrator"
 }
