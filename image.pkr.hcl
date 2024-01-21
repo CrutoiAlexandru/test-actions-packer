@@ -13,7 +13,8 @@ variable "region" {
 }
 
 variable "admin_password" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 source "amazon-ebs" "dotnet-windows-base" {
@@ -32,7 +33,7 @@ source "amazon-ebs" "dotnet-windows-base" {
   user_data = <<EOF
 <powershell>
 # Set administrator password
-net user Administrator ${var.admin_password} 
+net user Administrator Parola123!!!
 wmic useraccount where " name = ' Administrator ' " set PasswordExpires=FALSE
 
 # First, make sure WinRM can't be connected to
